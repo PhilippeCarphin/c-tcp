@@ -25,7 +25,7 @@ int print_single_addrinfo(struct addrinfo *a){
     inet_ntop(a->ai_family, addr, ipstr, sizeof(ipstr));
     fprintf(stderr, "addrinfo: a->ai_family=%d, (%s)\n", a->ai_family, type);
     fprintf(stderr, "addrinfo: a->ai_protocol=%d\n", a->ai_protocol);
-    fprintf(stderr, "addrinfo: a->ai_family=%s\n", a->ai_canonname);
+    fprintf(stderr, "addrinfo: a->ai_canonname=%s\n", a->ai_canonname);
     fprintf(stderr, "%s: %s\n", type, ipstr);
     return 0;
 }
@@ -40,9 +40,9 @@ struct addrinfo *addrinfo(const char *hostname, const char *port)
 {
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
-    hints.ai_family = AF_UNSPEC;
+    hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
-    hints.ai_flags |= AI_CANONNAME | AI_V4MAPPED_CFG | AI_PASSIVE;
+    // hints.ai_flags |= AI_CANONNAME | AI_V4MAPPED_CFG | AI_PASSIVE;
     struct addrinfo *res;
     int err = getaddrinfo(hostname, port, &hints, &res);
     if(err){
@@ -54,7 +54,7 @@ struct addrinfo *addrinfo(const char *hostname, const char *port)
 }
 
 int seeaddrinfo(const char *hostname, const char *port){
-    struct addrinfo *res = addrinfo("google.com", "80");
+    struct addrinfo *res = addrinfo(hostname, port);
     if(res == NULL){
         fprintf(stderr, "No results for address %s, port %s\n", hostname, port);
         return 1;
