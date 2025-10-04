@@ -1,0 +1,11 @@
+*.o
+*.dSYM
+*-t
+server
+client
+*.d
+*.o
+*.dylib
+*.so
+*.a
+

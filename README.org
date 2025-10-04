@@ -1,0 +1,8 @@
+#+TITLE: Network programming in C
+
+Following [[https://beej.us/guide/bgnet/html/split/index.html][Beej's Guide to Network Programming]]
+
+First part was following the section [[https://beej.us/guide/bgnet/html/split/system-calls-or-bust.html#getaddrinfoprepare-to-launch][5.1 System Calls or Bust: =getaddrinfo()=]]
+where I created do what he showed but did it in functions that I will be able
+to reuse in later parts.
+
