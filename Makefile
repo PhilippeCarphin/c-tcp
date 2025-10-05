@@ -20,7 +20,7 @@ test-addrinfo: addrinfo-t
 	./$<
 
 test-server: server
-	./$<
+	./$< $(ARGS)
 
 clean:
 	rm -f *-t

@@ -6,3 +6,10 @@ First part was following the section [[https://beej.us/guide/bgnet/html/split/sy
 where I created do what he showed but did it in functions that I will be able
 to reuse in later parts.
 
+After that I did a server which I fed data to using the =nc= command.
+
+I had it all working then the next day, I tried sending data to it from my
+raspberry pi and I couldn't figure out why the connection was not closing
+since I was sure I had handled that with =if(nbread == 0)=.  It turns out
+that the =nc= command on =RaspberryPiOS= needs the =-N= flag to tell it to
+close its side of the connection when it reaches the end of its input!
